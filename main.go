@@ -1,7 +1,7 @@
 package main
 
 import (
-	"tugas_2/handler"
+	"golang-gorm/handler"
 )
 
 func main() {

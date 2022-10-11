@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	//"tugas_2/models"
+	//"golang-gorm/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

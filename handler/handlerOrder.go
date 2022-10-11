@@ -3,11 +3,11 @@ package handler
 import (
 	"encoding/json"
 	"fmt"
+	"golang-gorm/models"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
-	"tugas_2/models"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"

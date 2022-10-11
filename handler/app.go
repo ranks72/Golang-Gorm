@@ -2,7 +2,7 @@ package handler
 
 import (
 	"fmt"
-	"tugas_2/database"
+	"golang-gorm/database"
 
 	"github.com/gin-gonic/gin"
 )
