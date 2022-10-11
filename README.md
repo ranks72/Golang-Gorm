@@ -5,6 +5,7 @@ At this Github, i learn about make rest-api using gorm in golang
 - Golang
 - Postgres
 - VsCode
+- Postman for testing
 
 ## First Step
 
@@ -44,4 +45,10 @@ uncomment this code because this code make table in your database
 
 And fill your database user and password
 
+## Testing
 
+For the test in my rest-api, you can use this postman
+
+```sh
+https://www.getpostman.com/collections/8fe8d958fc9f29b65906
+```
