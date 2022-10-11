@@ -1,5 +1,5 @@
 # Golang-Gorm
-Disini saya belajar membuat rest api menggunakan golang dengan database Postgres
+At this Github, i learn about make rest-api using gorm in golang
 
 ## Tools
 - Golang
