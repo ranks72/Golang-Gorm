@@ -1,12 +1,12 @@
 # Golang-Gorm
 Disini saya belajar membuat rest api menggunakan golang dengan database Postgres
 
-##Tools
+## Tools
 - Golang
 - Postgres
 - VsCode
 
-##First Step
+## First Step
 
 open your terminal
 
@@ -21,18 +21,18 @@ or run this code:
 go mod init (name folder)
 ```
 
-##Second Step
+## Second Step
 
 ```sh
  go get -u github.com/gin-gonic/gin
 ```
 
-##Third Step
+## Third Step
 ```sh
  go get -u gorm.io/gorm
 ```
 
-#Fourth Step
+## Fourth Step
 
 Open the file db.go in folder database
 search this code
