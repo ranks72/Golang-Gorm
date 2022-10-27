@@ -1,5 +1,5 @@
 # Golang-Gorm
-At this Github, i learn about make rest-api using gorm in golang
+At this Github, i learn about make rest-api using gorm in golang. i make request for order and item
 
 ## Tools
 - Golang
