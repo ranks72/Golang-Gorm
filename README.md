@@ -34,6 +34,11 @@ go mod init (name folder)
 ```
 
 ## Fourth Step
+Run this code
+
+```sh
+go get gorm.io/driver/postgres
+```
 
 Open the file db.go in folder database
 search this code
