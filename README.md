@@ -40,6 +40,19 @@ Run this code
 go get gorm.io/driver/postgres
 ```
 
+make new db and input your user, password, and dbname in file db.go in folder database
+```sh
+var (
+	host     = "localhost"
+	user     = "" //please input your user db
+	password = "" //please input your pass db
+	dBport   = "5432"
+	dBname   = ""
+	db       *gorm.DB
+	err      error
+)
+```
+
 Open the file db.go in folder database
 search this code
 
@@ -57,3 +70,6 @@ For the test in my rest-api, you can use this postman
 ```sh
 https://www.getpostman.com/collections/8fe8d958fc9f29b65906
 ```
+
+## Reference
+https://github.com/rotoshniwal/order-service
