@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	//"golang-gorm/models"
+	_ "golang-gorm/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -15,7 +15,7 @@ var (
 	user     = "" //silahkan masukan user db anda
 	password = "" //silahkan masukan pass db anda
 	dBport   = "5432"
-	dBname   = "belajar_gorm"
+	dBname   = ""
 	db       *gorm.DB
 	err      error
 )
