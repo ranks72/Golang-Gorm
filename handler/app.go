@@ -27,7 +27,7 @@ func RunApp() {
 
 	orderRoute := route.Group("/orders")
 	{
-		//orderRoute.GET("/", OrderHandler.GetAllOrders)
+		orderRoute.GET("/", OrderHandler.GetAllOrders)
 		orderRoute.POST("/", OrderHandler.AddOrders)
 		//orderRoute.PUT("/:orderId", OrderHandler.UpdateOrders)
 		//orderRoute.DELETE("/:orderId", OrderHandler.DeleteOrders)

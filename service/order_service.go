@@ -9,6 +9,7 @@ import (
 
 type OrderService interface {
 	CreateOrder(data dto.OrderRequest) (models.Order, error)
+	GetOrder() ([]models.Order, error)
 }
 
 type orderService struct {
@@ -28,4 +29,12 @@ func (u *orderService) CreateOrder(data dto.OrderRequest) (models.Order, error) 
 	}
 	orders, err := u.orderRepo.CreateOrder(order)
 	return orders, err
+}
+
+func (u *orderService) GetOrder() ([]models.Order, error) {
+	orders, err := u.orderRepo.GetOrders()
+	if err != nil {
+		return nil, err
+	}
+	return orders, nil
 }

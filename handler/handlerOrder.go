@@ -20,30 +20,18 @@ func NewOrderHandler(orderService service.OrderService, itemService service.Item
 	}
 }
 
-// func (m OrderHandler) GetAllOrders(c *gin.Context) {
+func (m OrderHandler) GetAllOrders(c *gin.Context) {
+	result, err := m.orderService.GetOrder()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"msg": http.StatusText(http.StatusInternalServerError),
+			"err": "BAD_REQUEST",
+		})
+		return
+	}
 
-// 	var (
-// 		orders []models.Order
-// 		result gin.H
-// 	)
-
-// 	//fmt.Sprintf("%s",orders)
-// 	//m.db.Find(&orders)
-// 	m.db.Preload("Items").Find(&orders)
-// 	if len(orders) <= 0 {
-// 		result = gin.H{
-// 			"result": nil,
-// 			"count":  0,
-// 		}
-// 	} else {
-// 		result = gin.H{
-// 			"results": orders,
-// 			"count":   len(orders),
-// 		}
-// 	}
-
-// 	c.JSON(http.StatusOK, result)
-// }
+	c.JSON(http.StatusOK, dto.GetAllOrdersResponse(result))
+}
 
 func (m OrderHandler) AddOrders(c *gin.Context) {
 	var request_order dto.OrderRequest
