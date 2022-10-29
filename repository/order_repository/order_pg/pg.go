@@ -30,3 +30,15 @@ func (u *orderPG) GetOrders() ([]models.Order, error) {
 	}
 	return orders, nil
 }
+
+func (u *orderPG) FindById(OrderID int) (models.Order, error) {
+	var order models.Order
+	err := u.db.First(&order, OrderID).Error
+	return order, err
+}
+
+func (u *orderPG) UpdateOrder(OrderID int, data models.Order) (models.Order, error) {
+	query := u.db.Where("id", OrderID).Updates(data)
+	err := query.Error
+	return data, err
+}

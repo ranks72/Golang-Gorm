@@ -36,3 +36,8 @@ func GetAllOrdersResponse(res []models.Order) (responses []OrderGetAllResponse) 
 	}
 	return
 }
+
+type UpdateOrderRequest struct {
+	Customer_Name string        `json:"customerName"`
+	Items         []ItemRequest `json:"items"`
+}

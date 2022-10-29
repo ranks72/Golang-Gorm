@@ -4,6 +4,7 @@ import (
 	"golang-gorm/dto"
 	"golang-gorm/service"
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -74,50 +75,36 @@ func (m OrderHandler) AddOrders(c *gin.Context) {
 	})
 }
 
-// func (m OrderHandler) UpdateOrders(c *gin.Context) {
-// 	orderIdParams := c.Param("orderId")
-// 	Order_IdParams, _ := strconv.Atoi(orderIdParams)
+func (m OrderHandler) UpdateOrders(c *gin.Context) {
+	orderIdParams := c.Param("orderId")
+	Order_IdParams, err := strconv.Atoi(orderIdParams)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, map[string]interface{}{
+			"msg": err.Error(),
+			"err": "Params null",
+		})
+	}
+	var updateRequest dto.UpdateOrderRequest
+	if err := c.Bind(&updateRequest); err != nil {
+		c.JSON(http.StatusUnprocessableEntity, map[string]interface{}{
+			"msg": err.Error(),
+			"err": "BAD_REQUEST",
+		})
+	}
+	order, err := m.orderService.Update(Order_IdParams, updateRequest)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"msg": http.StatusText(http.StatusInternalServerError),
+			"err": "BAD_REQUEST",
+		})
+		return
+	}
 
-// 	var (
-// 		orders models.Order
-// 		items  models.Item
-// 		result gin.H
-// 	)
+	_ = order
 
-// 	error := m.db.First(&orders, Order_IdParams)
-// 	if error.Error != nil {
-// 		fmt.Println(error.Error)
-// 	}
+	c.JSON(http.StatusOK, "result")
 
-// 	jsonData, err := ioutil.ReadAll(c.Request.Body)
-// 	if err != nil {
-// 		log.Fatalln(err)
-// 	}
-
-// 	var update_order models.Item
-// 	json.Unmarshal(jsonData, &update_order)
-// 	items.Id = update_order.Id
-// 	items.Item_Code = update_order.Item_Code
-// 	items.Description = update_order.Description
-// 	items.Quantity = update_order.Quantity
-// 	items.Order_Id = Order_IdParams
-// 	m.db.Save(&items)
-// 	hasil := m.db.Find(&orders, items.Order_Id)
-// 	if hasil.Error == nil {
-
-// 		m.db.Preload("Items").Find(&orders, items.Order_Id)
-// 		result = gin.H{
-// 			"result": orders,
-// 		}
-// 	}
-
-// 	// m.db.Save(&orders)
-// 	// result = gin.H{
-// 	// 	"result": orders,
-// 	// }
-// 	c.JSON(http.StatusOK, result)
-
-// }
+}
 
 // func (m OrderHandler) DeleteOrders(c *gin.Context) {
 // 	orderIdParams := c.Param("orderId")

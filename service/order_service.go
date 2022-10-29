@@ -10,6 +10,7 @@ import (
 type OrderService interface {
 	CreateOrder(data dto.OrderRequest) (models.Order, error)
 	GetOrder() ([]models.Order, error)
+	Update(OrderID int, data dto.UpdateOrderRequest) (models.Order, error)
 }
 
 type orderService struct {
@@ -37,4 +38,15 @@ func (u *orderService) GetOrder() ([]models.Order, error) {
 		return nil, err
 	}
 	return orders, nil
+}
+
+func (u *orderService) Update(OrderID int, data dto.UpdateOrderRequest) (models.Order, error) {
+	order := models.Order{
+		Ordered_At:    time.Now(),
+		Customer_Name: data.Customer_Name,
+	}
+
+	orders, err := u.orderRepo.UpdateOrder(OrderID, order)
+	orders, err = u.orderRepo.FindById(OrderID)
+	return orders, err
 }

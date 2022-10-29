@@ -12,3 +12,10 @@ type ItemAllRespons struct {
 	Description string `json:"description"`
 	Quantity    int    `json:"quantity"`
 }
+
+type UpdateItemRespons struct {
+	Id          int    `json:"item_id"`
+	Item_Code   string `json:"item_Code"`
+	Description string `json:"description"`
+	Quantity    int    `json:"quantity"`
+}
